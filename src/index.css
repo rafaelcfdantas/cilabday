@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fiesta-coral: #e84855;
+  --color-fiesta-gold: #f4a127;
+  --color-fiesta-teal: #1b998b;
+  --color-fiesta-magenta: #c5299d;
+  --color-fiesta-cream: #fff8f0;
+  --color-fiesta-indigo: #2d1b4e;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  --shadow-fiesta-glow: 0 0 24px rgb(244 161 39 / 0.45);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-fiesta-cream);
+    background-color: var(--color-fiesta-indigo);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

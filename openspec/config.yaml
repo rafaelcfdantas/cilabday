@@ -1,0 +1,12 @@
+schema: spec-driven
+
+context: |
+  Projeto: site interativo de aniversário para Pricila ("Cila"), 27 anos, 13 de julho.
+  Formato: Slideshow fullscreen — um Slide por vez, transições entre eles.
+  Escopo atual: apenas Intro (Kickoff + Prelude + conteúdo principal). Slides futuros em changes separadas.
+  Stack: Vite, React, TypeScript, Tailwind CSS, Framer Motion, @lottiefiles/dotlottie-react.
+  Assets: assets/audios/ (feliz_cumpleanos.mp3, cila_bday.mp3), assets/animations/ (.lottie).
+  Tema: Fiesta mexicana — vibrante, premium, calorosa, sem estética infantil.
+  Idioma UI: principalmente inglês; toques sutis de espanhol.
+  Responsividade obrigatória em todos breakpoints (mobile → desktop).
+  Glossário de domínio: CONTEXT.md na raiz do repo.
