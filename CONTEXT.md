@@ -33,8 +33,16 @@ Sequência temática de abertura de 3,75s, sincronizada com o silêncio inicial 
 _Avoid_: Loading screen, splash, spinner
 
 **CTA**:
-Botão "Start the Fiesta" na Intro. Visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s). Enquanto bloqueado, exibe countdown contínuo no label (`Start the Fiesta... N`). Centralizado no stack de conteúdo (não no rodapé). Ao liberar, label vira "Start the Fiesta" com cor viva, glow e interatividade. O clique inicia a transição para o próximo Slide.
+Botão "Next" na Intro. Visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s). Enquanto bloqueado, exibe countdown contínuo no label (`Next... N`). Centralizado no stack de conteúdo (não no rodapé). Ao liberar, label vira "Next" com cor viva, glow e interatividade. O clique inicia a transição para o próximo Slide. Semanticamente distinto do botão "Continue" dos Slides narrativos, que avança beats dentro do mesmo Slide.
 _Avoid_: Botão, link, call-to-action
+
+**Story beat**:
+Unidade narrativa dentro de um Slide de história, revelada sequencialmente. O usuário avança beats clicando "Continue" no CTA interno do Slide. Cada avanço pode exibir novo texto, mídia ou animação.
+_Avoid_: Step, página, frame
+
+**Birth story slide**:
+Slide 2 do Slideshow; primeiro capítulo narrativo sobre o nascimento da Cila (13/07/1999). Quatro beats interativos avançados pelo CTA interno "Continue" (soft lock 1s). Animate.css na entrada de cada beat; wave CSS suave e contínuo em todos os textos visíveis; polaroid com foto recém-nascida no beat 2; tom visual mais calmo que a Intro.
+_Avoid_: Slide de origem, capítulo 1
 
 **Intro soundtrack**:
 Faixa musical exclusiva da Intro (`feliz_cumpleanos.mp3`), do Prelude até a transição para o Slide 2. Em loop contínuo após o primeiro ciclo completo. Faz fade out de ~1s durante a transição visual; o Slideshow soundtrack só entra quando o Slide 2 estiver ativo.
@@ -45,7 +53,7 @@ Faixa musical global (`cila_bday.mp3`) que assume no Slide 2 e persiste nos Slid
 _Avoid_: Música de fundo, BGM, trilha
 
 **Audio control**:
-Controle mute/unmute fixo no canto superior direito, visível desde o início do Prelude e persistente em todos os Slides.
+Controle mute/unmute fixo no canto superior direito. Visível após o primeiro play de áudio (Kickoff tap) e **persistente em todos os Slides** — renderizado no shell do Slideshow, não dentro de Slides individuais.
 _Avoid_: Volume slider, botão de som
 
 **Fiesta**:

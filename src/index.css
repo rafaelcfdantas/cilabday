@@ -1,4 +1,30 @@
 @import "tailwindcss";
+@import "animate.css";
+
+@keyframes birth-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(calc(-1 * var(--wave-amplitude, 8px)));
+  }
+}
+
+.birth-wave-char {
+  display: inline-block;
+}
+
+.birth-wave-text--active .birth-wave-char {
+  animation: birth-wave var(--wave-cycle, 2.8s) ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * var(--wave-stagger, 0.14s));
+}
+
+.birth-wave-text--paused .birth-wave-char {
+  animation: none;
+  transform: translateY(0);
+}
 
 @theme {
   --color-fiesta-coral: #e84855;

@@ -13,14 +13,14 @@ function getSecondsUntilUnlock(elapsedMs: number): number {
 }
 
 function getCtaLabel(elapsedMs: number, isReady: boolean): string {
-  if (isReady) return 'Start the Fiesta'
+  if (isReady) return 'Next'
 
   const secondsLeft = getSecondsUntilUnlock(elapsedMs)
   if (secondsLeft >= 1) {
-    return `Start the Fiesta... ${secondsLeft}`
+    return `Next... ${secondsLeft}`
   }
 
-  return 'Start the Fiesta'
+  return 'Next'
 }
 
 export function IntroCta({ phase, elapsedMs, onClick }: IntroCtaProps) {

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, and a Placeholder slide for navigation validation.
+Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, Intro → Birth Story → Placeholder flow, and shell-level audio control.
 
 ## Requirements
 
@@ -48,33 +48,71 @@ The system SHALL register Slides via a declarative ordered registry so new Slide
 - **WHEN** a developer adds a new entry to the slide registry
 - **THEN** the Slideshow can navigate to that Slide without changing `SlideshowShell` transition logic
 
+### Requirement: Birth story slide as Slide 2
+
+The Slideshow SHALL register a Birth Story Slide as Slide 2 (index 1), replacing the previous Slide 2 Placeholder.
+
+#### Scenario: Registry order after change
+
+- **WHEN** the Slideshow initializes
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Placeholder (index 2)
+
+#### Scenario: Intro navigates to birth story
+
+- **WHEN** the user clicks the unlocked Intro CTA
+- **THEN** the Slideshow transitions to the Birth Story Slide (index 1)
+
+### Requirement: Placeholder slide as Slide 3
+
+The Slideshow SHALL include a minimal Placeholder slide as Slide 3 (index 2) to validate forward navigation after the birth story chapter.
+
+#### Scenario: Placeholder content is minimal
+
+- **WHEN** Slide 3 is active
+- **THEN** the user sees only minimal neutral placeholder content indicating Slide 3 is coming soon (no narrative story content)
+
+#### Scenario: Placeholder confirms navigation from birth story
+
+- **WHEN** the user completes the final birth story beat and clicks Continue
+- **THEN** Slide 3 is fully mounted and marked active in the Slideshow state
+
+#### Scenario: Slideshow soundtrack starts on birth story enter
+
+- **WHEN** the Birth Story Slide (index 1) enter animation completes
+- **THEN** the Slideshow soundtrack begins playing
+
 ### Requirement: Smooth slide transitions
 
 The Slideshow SHALL animate transitions between Slides using smooth fade and/or slide motion lasting approximately 600–800ms.
 
-#### Scenario: Intro to Placeholder transition
+#### Scenario: Intro to birth story transition
 
-- **WHEN** navigation from Slide 1 to Slide 2 is triggered
-- **THEN** the Intro exits with a smooth animation before the Placeholder Slide enters
+- **WHEN** navigation from Slide 1 (Intro) to Slide 2 (Birth Story) is triggered
+- **THEN** the Intro exits with a smooth animation before the Birth Story Slide enters
+
+#### Scenario: Birth story to placeholder transition
+
+- **WHEN** navigation from Birth Story Slide to Slide 3 Placeholder is triggered
+- **THEN** the Birth Story Slide exits with a smooth animation before the Placeholder enters
 
 #### Scenario: Wait mode between slides
 
 - **WHEN** a transition from one Slide to the next begins
 - **THEN** the outgoing Slide completes its exit animation before the incoming Slide mounts
 
-### Requirement: Placeholder slide for navigation validation
+### Requirement: Global audio mute control
 
-The Slideshow SHALL include a minimal Placeholder slide as Slide 2 to validate navigation and downstream handoff behavior.
+The Slideshow shell SHALL render the audio mute/unmute control once at shell level so it persists across all slides.
 
-#### Scenario: Placeholder content is minimal
+#### Scenario: Mute control visible on birth story slide
 
-- **WHEN** Slide 2 is active
-- **THEN** the user sees only minimal neutral placeholder content (no narrative story content)
+- **WHEN** the Birth Story Slide is active
+- **THEN** the mute/unmute control remains visible and functional
 
-#### Scenario: Placeholder confirms navigation
+#### Scenario: Mute state persists across navigation
 
-- **WHEN** the user arrives at Slide 2 after clicking the Intro CTA
-- **THEN** Slide 2 is fully mounted and marked active in the Slideshow state
+- **WHEN** the user toggles mute on one slide and navigates to another
+- **THEN** the mute state is preserved
 
 ### Requirement: Slideshow navigation API
 

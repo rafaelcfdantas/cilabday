@@ -30,6 +30,7 @@ export type LottiePlacement = {
   hideOnMobile?: boolean
   spin?: boolean
   float?: boolean
+  loop?: boolean
 }
 
 export const kickoffDecorations: LottiePlacement[] = [

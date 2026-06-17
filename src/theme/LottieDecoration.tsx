@@ -26,6 +26,7 @@ export function LottieDecoration({
   className = '',
   float = false,
   spin = false,
+  loop = true,
 }: LottieDecorationProps) {
   const visibility = hideOnMobile ? 'hidden sm:block' : 'block'
 
@@ -37,7 +38,7 @@ export function LottieDecoration({
         animate={{ opacity: 0.85 }}
         transition={{ duration: 0.8, delay }}
       >
-        <DotLottieReact src={src} loop autoplay className="h-full w-full object-cover" />
+        <DotLottieReact src={src} loop={loop} autoplay className="h-full w-full object-cover" />
       </motion.div>
     )
   }
@@ -64,7 +65,7 @@ export function LottieDecoration({
             : undefined,
       }}
     >
-      <DotLottieReact src={src} loop autoplay className="h-full w-full" />
+      <DotLottieReact src={src} loop={loop} autoplay className="h-full w-full" />
     </motion.div>
   )
 }

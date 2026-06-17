@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
 import { useAudio } from '@/audio/useAudio'
 import { useSlideshow } from '@/slideshow/SlideshowProvider'
-import { AudioControl } from '@/components/AudioControl'
 import { KickoffPhase } from './KickoffPhase'
 import { PreludePhase } from './PreludePhase'
 import { MainPhase } from './MainPhase'
@@ -34,7 +33,6 @@ export function IntroSlide({ isActive }: { isActive: boolean }) {
       {showMainContent && (
         <MainPhase phase={phase} elapsedMs={elapsedMs} onCtaClick={handleCtaClick} />
       )}
-      <AudioControl />
     </div>
   )
 }

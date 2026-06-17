@@ -1,8 +1,8 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { motion } from 'framer-motion'
-import confetti1 from '@assets/animations/01_confetti.lottie'
-import confetti2 from '@assets/animations/02_confetti.lottie'
-import confetti3 from '@assets/animations/03_confetti.lottie'
+import confetti1 from '@assets/animations/confetti_01.lottie'
+import confetti2 from '@assets/animations/confetti_02.lottie'
+import confetti3 from '@assets/animations/confetti_03.lottie'
 import { getActiveConfettiBurst } from '@/audio/constants'
 
 const confettiSources = [confetti1, confetti2, confetti3]

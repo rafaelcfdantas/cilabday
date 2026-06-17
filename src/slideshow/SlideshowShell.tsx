@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { AudioControl } from '@/components/AudioControl'
 import { useAudio } from '@/audio/useAudio'
 import { SLIDE_TRANSITION_MS } from '@/audio/constants'
 import { slideRegistry } from './slideRegistry'
@@ -30,6 +31,7 @@ export function SlideshowShell() {
 
   return (
     <div className="relative h-dvh w-full overflow-hidden">
+      <AudioControl />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide.id}
