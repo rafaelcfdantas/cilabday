@@ -6,10 +6,14 @@ export const SLIDESHOW_SOUNDTRACK = slideshowSoundtrack
 
 export const PRELUDE_DURATION_MS = 3750
 export const MAIN_PHASE_START_MS = PRELUDE_DURATION_MS
-export const CTA_APPEAR_MS = 50000
-export const CTA_UNLOCK_MS = 52000
+export const CTA_APPEAR_MS = 1000 // original 50000
+export const CTA_UNLOCK_MS = 2000 // original 52000
 export const INTRO_FADE_OUT_MS = 1000
 export const FIRST_LOOP_DURATION_MS = 52000
+
+/** HTMLAudio volume floor/ceiling for intro + slideshow (0–1). Fades animate between these. */
+export const SOUNDTRACK_VOLUME_MIN = 0
+export const SOUNDTRACK_VOLUME = 0.1
 
 export const SLIDE_TRANSITION_MS = 700
 

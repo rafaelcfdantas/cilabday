@@ -3,10 +3,23 @@ schema: spec-driven
 context: |
   Projeto: site interativo de aniversário para Pricila ("Cila"), 27 anos, 13 de julho.
   Formato: Slideshow fullscreen — um Slide por vez, transições entre eles.
-  Escopo atual: apenas Intro (Kickoff + Prelude + conteúdo principal). Slides futuros em changes separadas.
+  Slides: Intro, Birth story, Balloon game (change slide-balloon-game), Placeholder; novos slides via changes OpenSpec.
   Stack: Vite, React, TypeScript, Tailwind CSS, Framer Motion, @lottiefiles/dotlottie-react.
   Assets: assets/audios/ (feliz_cumpleanos.mp3, cila_bday.mp3), assets/animations/ (.lottie).
   Tema: Fiesta mexicana — vibrante, premium, calorosa, sem estética infantil.
   Idioma UI: principalmente inglês; toques sutis de espanhol.
   Responsividade obrigatória em todos breakpoints (mobile → desktop).
-  Glossário de domínio: CONTEXT.md na raiz do repo.
+
+  Documentação do projeto (fora do OpenSpec, mas obrigatória):
+  - CONTEXT.md na raiz do repo = glossário de domínio canônico (termos, slides, CTAs, fluxos).
+  - Não é artefato OpenSpec; complementa specs com linguagem compartilhada para humanos e IA.
+  - Deve ser atualizado sempre que uma change introduzir ou alterar conceitos de domínio — durante propose/design, não como opcional.
+
+rules:
+  proposal:
+    - Se a change introduz ou altera termos de domínio (slides, CTAs, beats, fluxos, glossário), incluir atualização de CONTEXT.md em What Changes e Impact
+    - Nunca marcar CONTEXT.md como opcional — faz parte da documentação do projeto
+  design:
+    - Usar terminologia de CONTEXT.md; indicar entradas novas ou revisadas no glossário quando aplicável
+  specs:
+    - Alinhar nomes de requirements e scenarios com termos definidos em CONTEXT.md quando existirem

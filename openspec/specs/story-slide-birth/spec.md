@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Slide 2 of the Slideshow — interactive four-beat birth story chapter for Cila (July 13, 1999). Calmer Fiesta atmosphere than Intro; in-slide **Continue** CTA advances beats; final beat navigates to Slide 3 Placeholder.
+Slide 2 of the Slideshow — interactive four-beat birth story chapter for Cila (July 13, 1999). Calmer Fiesta atmosphere than Intro; in-slide **Continue** CTA advances beats; final beat navigates to Slide 3 Balloon Game.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ The Birth Story Slide SHALL present a four-beat narrative about Cila's birth, ad
 #### Scenario: Final beat advances slideshow
 
 - **WHEN** the user clicks Continue on beat 3 (the fourth beat, index 3)
-- **THEN** the Slideshow navigates to Slide 3 (Placeholder)
+- **THEN** the Slideshow navigates to Slide 3 (Balloon Game Slide)
 
 ### Requirement: Canonical beat copy in English
 

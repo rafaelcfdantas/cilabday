@@ -13,7 +13,7 @@ Tela individual que ocupa o viewport inteiro dentro do Slideshow.
 _Avoid_: Página, seção, step
 
 **Placeholder slide**:
-Slide temporário sem conteúdo final, usado para validar navegação e handoff de áudio entre Slides antes da implementação do conteúdo real.
+Slide 4 do Slideshow; slide temporário sem conteúdo final, usado para validar navegação forward após o Balloon game slide antes da implementação do próximo capítulo.
 _Avoid_: Stub page, mock screen
 
 **Kickoff**:
@@ -33,7 +33,7 @@ Sequência temática de abertura de 3,75s, sincronizada com o silêncio inicial 
 _Avoid_: Loading screen, splash, spinner
 
 **CTA**:
-Botão "Next" na Intro. Visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s). Enquanto bloqueado, exibe countdown contínuo no label (`Next... N`). Centralizado no stack de conteúdo (não no rodapé). Ao liberar, label vira "Next" com cor viva, glow e interatividade. O clique inicia a transição para o próximo Slide. Semanticamente distinto do botão "Continue" dos Slides narrativos, que avança beats dentro do mesmo Slide.
+Botão de avanço dentro ou entre Slides. **Next** avança para o próximo Slide (Intro e Balloon game slide). **Continue** avança beats dentro do mesmo Slide narrativo (Birth story slide). Na Intro: visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s); enquanto bloqueado, exibe countdown contínuo no label (`Next... N`); centralizado no stack de conteúdo (não no rodapé). No Balloon game slide: aparece após todos os balões estourados e 2s de leitura; avança para o Placeholder (Slide 4). Ao liberar, label "Next" com cor viva, glow e interatividade.
 _Avoid_: Botão, link, call-to-action
 
 **Story beat**:
@@ -41,15 +41,19 @@ Unidade narrativa dentro de um Slide de história, revelada sequencialmente. O u
 _Avoid_: Step, página, frame
 
 **Birth story slide**:
-Slide 2 do Slideshow; primeiro capítulo narrativo sobre o nascimento da Cila (13/07/1999). Quatro beats interativos avançados pelo CTA interno "Continue" (soft lock 1s). Animate.css na entrada de cada beat; wave CSS suave e contínuo em todos os textos visíveis; polaroid com foto recém-nascida no beat 2; tom visual mais calmo que a Intro.
+Slide 2 do Slideshow; primeiro capítulo narrativo sobre o nascimento da Cila (13/07/1999). Quatro beats interativos avançados pelo CTA interno "Continue" (soft lock 1s). Animate.css na entrada de cada beat; wave CSS suave e contínuo em todos os textos visíveis; polaroid com foto recém-nascida no beat 2; tom visual mais calmo que a Intro. Beat final navega para o Balloon game slide (Slide 3).
 _Avoid_: Slide de origem, capítulo 1
 
+**Balloon game slide**:
+Slide 3 do Slideshow; minigame interativo de estourar balões para revelar uma mensagem pessoal em inglês. Fases: hint "Pop the balloons!" (fade in/hold/fade out 3s) → camada do jogo (grid 3×3 + parágrafo) com fade in sobreposto ao fade out do hint → interação (cursor alfinete, 9 balões Lottie clicáveis, SFX aleatório de estouro, ordem livre) → 2s para leitura do parágrafo completo → CTA "Next" para o Placeholder (Slide 4). Parágrafo renderiza com opacity 1 sob os balões; estourar remove só o balão (célula do grid permanece, sem reordenar os demais). Posições aleatórias por célula sorteadas uma vez quando o slide aparece e fixas durante o jogo. Copy editável em `balloonGameCopy.ts`.
+_Avoid_: Mini-game genérico, pop-the-balloon arcade
+
 **Intro soundtrack**:
-Faixa musical exclusiva da Intro (`feliz_cumpleanos.mp3`), do Prelude até a transição para o Slide 2. Em loop contínuo após o primeiro ciclo completo. Faz fade out de ~1s durante a transição visual; o Slideshow soundtrack só entra quando o Slide 2 estiver ativo.
+Faixa musical exclusiva da Intro (`feliz_cumpleanos.mp3`), do Prelude até a transição para o Slide 2. Em loop contínuo após o primeiro ciclo completo. Volume máximo tunável via `SOUNDTRACK_VOLUME` em `src/audio/constants.ts`; fade out no CTA anima até `SOUNDTRACK_VOLUME_MIN` (~1s). Slideshow soundtrack só entra quando o Slide 2 estiver ativo.
 _Avoid_: Música de fundo, BGM, trilha
 
 **Slideshow soundtrack**:
-Faixa musical global (`cila_bday.mp3`) que assume no Slide 2 e persiste nos Slides seguintes. Sem delay interno — início musical imediato. Só pode começar a tocar quando o Slide 2 já estiver ativo; nunca durante a Intro ou a transição visual.
+Faixa musical global (`cila_bday.mp3`) que assume no Slide 2 e persiste nos Slides seguintes. Sem delay interno — início musical imediato. Volume máximo: `SOUNDTRACK_VOLUME` em `src/audio/constants.ts`. Só pode começar a tocar quando o Slide 2 já estiver ativo; nunca durante a Intro ou a transição visual.
 _Avoid_: Música de fundo, BGM, trilha
 
 **Audio control**:

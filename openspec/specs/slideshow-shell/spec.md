@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, Intro → Birth Story → Placeholder flow, and shell-level audio control.
+Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, Intro → Birth Story → Balloon Game → Placeholder flow, and shell-level audio control.
 
 ## Requirements
 
@@ -55,26 +55,40 @@ The Slideshow SHALL register a Birth Story Slide as Slide 2 (index 1), replacing
 #### Scenario: Registry order after change
 
 - **WHEN** the Slideshow initializes
-- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Placeholder (index 2)
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Placeholder (index 3)
 
 #### Scenario: Intro navigates to birth story
 
 - **WHEN** the user clicks the unlocked Intro CTA
 - **THEN** the Slideshow transitions to the Birth Story Slide (index 1)
 
-### Requirement: Placeholder slide as Slide 3
+### Requirement: Balloon game slide as Slide 3
 
-The Slideshow SHALL include a minimal Placeholder slide as Slide 3 (index 2) to validate forward navigation after the birth story chapter.
+The Slideshow SHALL register a Balloon Game Slide as Slide 3 (index 2), replacing the previous Slide 3 Placeholder.
+
+#### Scenario: Registry order after change
+
+- **WHEN** the Slideshow initializes
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Placeholder (index 3)
+
+#### Scenario: Birth story navigates to balloon game
+
+- **WHEN** the user completes the final birth story beat and clicks Continue
+- **THEN** the Slideshow transitions to the Balloon Game Slide (index 2)
+
+### Requirement: Placeholder slide as Slide 4
+
+The Slideshow SHALL include a minimal Placeholder slide as Slide 4 (index 3) to validate forward navigation after the balloon game chapter.
 
 #### Scenario: Placeholder content is minimal
 
-- **WHEN** Slide 3 is active
-- **THEN** the user sees only minimal neutral placeholder content indicating Slide 3 is coming soon (no narrative story content)
+- **WHEN** Slide 4 is active
+- **THEN** the user sees only minimal neutral placeholder content indicating the next chapter is coming soon (no narrative story content)
 
-#### Scenario: Placeholder confirms navigation from birth story
+#### Scenario: Placeholder confirms navigation from balloon game
 
-- **WHEN** the user completes the final birth story beat and clicks Continue
-- **THEN** Slide 3 is fully mounted and marked active in the Slideshow state
+- **WHEN** the user completes the balloon game and clicks Next
+- **THEN** Slide 4 is fully mounted and marked active in the Slideshow state
 
 #### Scenario: Slideshow soundtrack starts on birth story enter
 
@@ -90,10 +104,15 @@ The Slideshow SHALL animate transitions between Slides using smooth fade and/or 
 - **WHEN** navigation from Slide 1 (Intro) to Slide 2 (Birth Story) is triggered
 - **THEN** the Intro exits with a smooth animation before the Birth Story Slide enters
 
-#### Scenario: Birth story to placeholder transition
+#### Scenario: Birth story to balloon game transition
 
-- **WHEN** navigation from Birth Story Slide to Slide 3 Placeholder is triggered
-- **THEN** the Birth Story Slide exits with a smooth animation before the Placeholder enters
+- **WHEN** navigation from Birth Story Slide to Balloon Game Slide is triggered
+- **THEN** the Birth Story Slide exits with a smooth animation before the Balloon Game Slide enters
+
+#### Scenario: Balloon game to placeholder transition
+
+- **WHEN** navigation from Balloon Game Slide to Slide 4 Placeholder is triggered
+- **THEN** the Balloon Game Slide exits with a smooth animation before the Placeholder enters
 
 #### Scenario: Wait mode between slides
 

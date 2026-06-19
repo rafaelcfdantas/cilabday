@@ -13,6 +13,8 @@ import {
   INTRO_FADE_OUT_MS,
   INTRO_SOUNDTRACK,
   SLIDESHOW_SOUNDTRACK,
+  SOUNDTRACK_VOLUME,
+  SOUNDTRACK_VOLUME_MIN,
 } from './constants'
 
 export type ActiveTrack = 'intro' | 'slideshow' | null
@@ -65,12 +67,12 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const intro = new Audio(INTRO_SOUNDTRACK)
     intro.preload = 'auto'
-    intro.volume = 1
+    intro.volume = SOUNDTRACK_VOLUME
     intro.loop = false
 
     const slideshow = new Audio(SLIDESHOW_SOUNDTRACK)
     slideshow.preload = 'auto'
-    slideshow.volume = 1
+    slideshow.volume = SOUNDTRACK_VOLUME
     slideshow.loop = true
 
     introRef.current = intro
@@ -110,7 +112,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
     intro.currentTime = 0
     intro.loop = false
-    intro.volume = 1
+    intro.volume = SOUNDTRACK_VOLUME
     setIntroLoopEnabled(true)
     setHasStarted(true)
     setActiveTrack('intro')
@@ -122,10 +124,10 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     if (!intro) return
 
     setIntroLoopEnabled(false)
-    await fadeVolume(intro, intro.volume, 0, INTRO_FADE_OUT_MS)
+    await fadeVolume(intro, intro.volume, SOUNDTRACK_VOLUME_MIN, INTRO_FADE_OUT_MS)
     intro.pause()
     intro.currentTime = 0
-    intro.volume = 1
+    intro.volume = SOUNDTRACK_VOLUME
     intro.loop = false
 
     if (activeTrack === 'intro') {
@@ -141,7 +143,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     intro?.pause()
 
     slideshow.currentTime = 0
-    slideshow.volume = 1
+    slideshow.volume = SOUNDTRACK_VOLUME
     slideshow.loop = true
     setActiveTrack('slideshow')
     void slideshow.play()

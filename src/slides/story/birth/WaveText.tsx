@@ -9,13 +9,23 @@ type WaveTextProps = {
   text: string
   waveEnabled: boolean
   className?: string
+  waveAmplitudePx?: number
+  waveCycleDurationS?: number
+  waveLetterStaggerS?: number
 }
 
-export function WaveText({ text, waveEnabled, className = '' }: WaveTextProps) {
+export function WaveText({
+  text,
+  waveEnabled,
+  className = '',
+  waveAmplitudePx = WAVE_AMPLITUDE_PX,
+  waveCycleDurationS = WAVE_CYCLE_DURATION_S,
+  waveLetterStaggerS = WAVE_LETTER_STAGGER_S,
+}: WaveTextProps) {
   const style = {
-    '--wave-amplitude': `${WAVE_AMPLITUDE_PX}px`,
-    '--wave-cycle': `${WAVE_CYCLE_DURATION_S}s`,
-    '--wave-stagger': `${WAVE_LETTER_STAGGER_S}s`,
+    '--wave-amplitude': `${waveAmplitudePx}px`,
+    '--wave-cycle': `${waveCycleDurationS}s`,
+    '--wave-stagger': `${waveLetterStaggerS}s`,
   } as CSSProperties
 
   const words = text.trim().split(/\s+/)

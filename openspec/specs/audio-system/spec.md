@@ -47,7 +47,12 @@ The Intro soundtrack SHALL play from t=0, loop continuously after the first comp
 #### Scenario: Fade out on CTA click
 
 - **WHEN** the user clicks the unlocked CTA
-- **THEN** the Intro soundtrack volume fades to zero over approximately 1000ms and playback stops
+- **THEN** the Intro soundtrack volume fades from its current level to `SOUNDTRACK_VOLUME_MIN` (0) over approximately 1000ms and playback stops
+
+#### Scenario: Soundtrack volume ceiling
+
+- **WHEN** either soundtrack plays at full level
+- **THEN** its HTMLAudio `volume` is set to `SOUNDTRACK_VOLUME` from `src/audio/constants.ts` (not user-adjustable at runtime; no volume slider in UI)
 
 ### Requirement: Slideshow soundtrack start conditions
 
