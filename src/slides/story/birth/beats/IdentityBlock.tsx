@@ -7,7 +7,7 @@ import {
   getIdentityPhotoColumnClass,
   getIdentityTextColumnClass,
 } from '../birthStoryLayout'
-import { PolaroidPhoto } from '../PolaroidPhoto'
+import { PolaroidPhoto } from '@/components/PolaroidPhoto'
 import { WaveText } from '../WaveText'
 
 const BODY_CLASS = 'font-body text-base text-fiesta-cream/90 sm:text-lg md:text-xl'
@@ -67,7 +67,14 @@ export function IdentityBlock({
       {(identityWave) => (
         <div className={getIdentityBlockLayoutClass()}>
           <div className={getIdentityPhotoColumnClass()}>
-            <PolaroidPhoto src={photoSrc} isCurrent={isIdentityCurrent} />
+            <PolaroidPhoto isCurrent={isIdentityCurrent}>
+              <img
+                src={photoSrc}
+                alt=""
+                className="block max-w-44 object-cover sm:max-w-xs"
+                draggable={false}
+              />
+            </PolaroidPhoto>
           </div>
 
           <div className={getIdentityTextColumnClass(showClosing)}>

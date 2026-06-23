@@ -139,24 +139,29 @@ Balloon clicks and pin cursor SHALL remain disabled until the game layer opacity
 - **WHEN** the game layer opacity reaches 1 at t=3.5s after slide enter
 - **THEN** balloon click handlers and pin cursor become active
 
-### Requirement: Next CTA after reading delay
+### Requirement: Next CTA after all balloons popped
 
-After all balloons are popped, the slide SHALL wait 2 seconds before showing an unlocked **Next** CTA that navigates to Slide 4 (Placeholder).
+After all balloons are popped, the slide SHALL wait 2 seconds before showing an unlocked **Next** CTA that navigates to Slide 4 (Gallery Slide).
 
 #### Scenario: CTA hidden during gameplay
 
 - **WHEN** one or more balloons remain unpopped
 - **THEN** no Next CTA is visible
 
-#### Scenario: Two-second reading window
+#### Scenario: CTA appears after delay
 
-- **WHEN** the last balloon is popped
-- **THEN** the Next CTA appears after a 2s delay, giving the user time to read the full paragraph
+- **WHEN** all 9 balloons have been popped
+- **THEN** the Next CTA appears after 2 seconds of reading time
 
-#### Scenario: Next advances slideshow
+#### Scenario: CTA label and style
+
+- **WHEN** the Next CTA is visible and unlocked
+- **THEN** the button label reads "Next" with live color, glow, and full interactivity consistent with other slideshow CTAs
+
+#### Scenario: Next navigates to gallery slide
 
 - **WHEN** the user clicks the unlocked Next CTA
-- **THEN** the Slideshow navigates to Slide 4 (Placeholder)
+- **THEN** the Slideshow navigates to Slide 4 (Gallery Slide)
 
 ### Requirement: English paragraph copy in constants file
 
