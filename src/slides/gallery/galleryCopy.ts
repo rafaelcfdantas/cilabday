@@ -24,10 +24,10 @@ export const GALLERY_ITEMS: readonly GalleryItem[] = [
     media: {
       type: 'gif',
       src: pinataGif,
-      alt: 'Cila beating a pinata',
+      alt: 'Cila beating a piñata',
     },
-    title: 'Cila beating a pinata',
-    description: "That's Cila beating a pinata like it was a broke man who does nothing but disturb her peace.",
+    title: 'Cila beating a piñata',
+    description: "That's Cila beating a piñata like it was a broke man who does nothing but disturb her peace.",
     buttons: [
       {
         id: 'denial',
@@ -79,7 +79,7 @@ export const GALLERY_ITEMS: readonly GalleryItem[] = [
         label: "I don't remember this 🙈",
         effect: {
           type: 'modal',
-          message: 'Well, the picture speaks for itself.',
+          message: "That's exactly what a drunk person would say.",
           variant: 'backdrop-and-x',
         },
       },

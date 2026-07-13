@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
+import { DEV_START_SLIDE_INDEX } from './devConstants'
 
 type SlideshowContextValue = {
   currentIndex: number
@@ -19,7 +20,7 @@ type SlideshowContextValue = {
 const SlideshowContext = createContext<SlideshowContextValue | null>(null)
 
 export function SlideshowProvider({ children }: { children: ReactNode }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(DEV_START_SLIDE_INDEX)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const slideActiveListeners = useRef<Set<(index: number) => void>>(new Set())
 

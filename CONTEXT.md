@@ -12,9 +12,13 @@ _Avoid_: Apresentação, deck, carousel
 Tela individual que ocupa o viewport inteiro dentro do Slideshow.
 _Avoid_: Página, seção, step
 
-**Placeholder slide**:
-Slide 5 do Slideshow; slide temporário sem conteúdo final, usado para validar navegação forward após o Gallery Slide enquanto próximos capítulos ainda não foram implementados.
-_Avoid_: Stub page, mock screen
+**Farewell slide**:
+Slide 6 (último) do Slideshow; epílogo temporizado que substitui o Placeholder. Quatro beats automáticos (sem CTA): fade in 1s → hold editável (1,5s / 3s / 1,5s / 3s) → fade out 1s. Copy: "Did you enjoy your surprise?" → "I bet it's the first time you've received a gift like this." → "A unique gift for a unique person." → "HAPPY BIRTHDAY!". Visuais por beat (sem emojis): heart + WaveText; jumping gifts + parrot + WaveText; WaveText com twinkle_stars overlay `inset-0` (glitter nas letras); BouncingText colorCycle + confetti_02 one-shot + cinco Lotties em slots % (balloons, party_blower, bday_cupcake, bday_cake, party_cups). Finale: "THE END" estático + "Watch again" → `window.location.reload()`. Fundo `FiestaBackground`.
+_Avoid_: Placeholder slide, credits roll, CTA-driven closing
+
+**Gift catch slide**:
+Slide 5 do Slideshow; minigame de pegar presentes Lottie caindo para "descobrir" como a Cila é vista. Fases: hint (`HINT_TEXT`, timing igual ao Balloon game) → interactive (1º spawn imediato; delays 0,5–1s; queda 1,5–2s; counter numérico bare; miss remove sem pontuar; Lottie play-once; sem SFX) → complete (fade dos gifts restantes, depois reveal dos 8 adjetivos fixos com WaveText, tilt leve e layout flutuante) → CTA "Next" 1s após a entrada do último adjetivo, navegando para Farewell (Slide 6). Coleção é cosmética: sempre os mesmos 8 adjetivos em `giftCatchCopy.ts`.
+_Avoid_: Catch-the-falling-objects genérico, collectible adjectives
 
 **Kickoff**:
 Tela pré-Prelude que exige um toque da Cila para iniciar a experiência. Mensagem: "I hope you love this surprise. You're so special!" Hint: "Tap to begin". Visual festivo ao redor. O toque marca t=0 e dispara Prelude + Intro soundtrack juntos.
@@ -33,7 +37,7 @@ Sequência temática de abertura de 3,75s, sincronizada com o silêncio inicial 
 _Avoid_: Loading screen, splash, spinner
 
 **CTA**:
-Botão de avanço dentro ou entre Slides. **Next** avança para o próximo Slide (Intro e Balloon game slide). **Continue** avança beats dentro do mesmo Slide narrativo (Birth story slide e Gallery Slide). Na Intro: visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s); enquanto bloqueado, exibe countdown contínuo no label (`Next... N`); centralizado no stack de conteúdo (não no rodapé). No Balloon game slide: aparece após todos os balões estourados e 2s de leitura; avança para o Gallery Slide (Slide 4). No Gallery Slide: cada beat tem botões próprios e lock de 2s; botão de avanço final navega para Placeholder (Slide 5).
+Botão de avanço dentro ou entre Slides. **Next** avança para o próximo Slide (Intro, Balloon game slide e Gift catch slide). **Continue** avança beats dentro do mesmo Slide narrativo (Birth story slide e Gallery Slide). Na Intro: visível desde a MainPhase (~t=3,75s), bloqueado até o fim do primeiro loop do áudio (~t=52s); enquanto bloqueado, exibe countdown contínuo no label (`Next... N`); centralizado no stack de conteúdo (não no rodapé). No Balloon game slide: aparece após todos os balões estourados e 2s de leitura; avança para o Gallery Slide (Slide 4). No Gallery Slide: cada beat tem botões próprios e lock de 2s; botão de avanço final navega para Gift catch (Slide 5). No Gift catch slide: aparece 1s após a entrada do último adjetivo; avança para Farewell (Slide 6). No Farewell: sem Next/Continue entre beats; no finale, controle discreto **Watch again** recarrega a página (`location.reload()`).
 _Avoid_: Botão, link, call-to-action
 
 **Story beat**:
@@ -49,7 +53,7 @@ Slide 3 do Slideshow; minigame interativo de estourar balões para revelar uma m
 _Avoid_: Mini-game genérico, pop-the-balloon arcade
 
 **Gallery slide**:
-Slide 4 do Slideshow; capítulo de galeria com hint configurável (`GALLERY_HINT`) e sete beats sequenciais em polaroid. Um item por vez (`section id` canônico por beat), ângulo por item, lock de ação de 2s por beat, transição fade-out/fade-in entre beats, ações especiais (modal dismissível, modal confirm-only no beat de gym, SFX aleatório no beat girly, botão correndo no beat sleeping). Beat final navega para Placeholder (Slide 5).
+Slide 4 do Slideshow; capítulo de galeria com hint configurável (`GALLERY_HINT`) e sete beats sequenciais em polaroid. Um item por vez (`section id` canônico por beat), ângulo por item, lock de ação de 2s por beat, transição fade-out/fade-in entre beats, ações especiais (modal dismissível, modal confirm-only no beat de gym, SFX aleatório no beat girly, botão correndo no beat sleeping). Beat final navega para Gift catch (Slide 5).
 _Avoid_: Carrossel, feed, grid de miniaturas
 
 **Intro soundtrack**:

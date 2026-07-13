@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Slide 4 of the Slideshow — meme gallery with configurable hint phase, seven beat-driven polaroids, optional titles and descriptions, and per-beat custom button actions. One gallery item visible at a time; final continue navigates to Placeholder Slide (Slide 5).
+Slide 4 of the Slideshow — meme gallery with configurable hint phase, seven beat-driven polaroids, optional titles and descriptions, and per-beat custom button actions. One gallery item visible at a time; final continue navigates to Gift catch Slide (Slide 5).
 
 ## Requirements
 
@@ -138,10 +138,24 @@ A gallery button without a custom action (no `description` in source copy) SHALL
 - **WHEN** the user clicks a continue button on beat index less than 6
 - **THEN** the Gallery Slide advances to the next beat with fade out then fade in
 
-#### Scenario: Final beat continue exits to placeholder
+#### Scenario: Final beat continue exits to gift catch
 
 - **WHEN** the user clicks a continue button on beat index 6 (`seductive`)
-- **THEN** the Slideshow calls `goToNext()` and navigates to Slide 5 (Placeholder)
+- **THEN** the Slideshow calls `goToNext()` and navigates to Slide 5 (Gift catch slide)
+
+### Requirement: Final beat navigates to Gift catch slide
+
+The final gallery beat advance action SHALL call `goToNext()` to navigate to the Gift catch slide (Slide 5), not directly to Placeholder.
+
+#### Scenario: Last beat exits to gift catch
+
+- **WHEN** the user completes the seventh gallery beat (index 6) and clicks the advance button
+- **THEN** the Slideshow calls `goToNext()` and navigates to Slide 5 (Gift catch slide)
+
+#### Scenario: Non-final beats stay in gallery
+
+- **WHEN** the user advances from a gallery beat before index 6
+- **THEN** the Gallery Slide shows the next beat and does not call `goToNext()`
 
 ### Requirement: Dismissible modal custom action
 
