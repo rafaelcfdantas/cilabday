@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, Intro → Birth Story → Balloon Game → Gallery → Gift catch → Placeholder flow, and shell-level audio control.
+Fullscreen Slideshow container that displays one Slide at a time, supports modular slide registration, smooth transitions, Intro → Birth Story → Balloon Game → Gallery → Gift catch → Farewell flow, and shell-level audio control.
 
 ## Requirements
 
@@ -55,7 +55,7 @@ The Slideshow SHALL register a Birth Story Slide as Slide 2 (index 1), replacing
 #### Scenario: Registry order after change
 
 - **WHEN** the Slideshow initializes
-- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Placeholder (index 5)
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Farewell slide (index 5)
 
 #### Scenario: Intro navigates to birth story
 
@@ -69,7 +69,7 @@ The Slideshow SHALL register a Balloon Game Slide as Slide 3 (index 2), replacin
 #### Scenario: Registry order after change
 
 - **WHEN** the Slideshow initializes
-- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Placeholder (index 5)
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Farewell slide (index 5)
 
 #### Scenario: Birth story navigates to balloon game
 
@@ -83,7 +83,7 @@ The Slideshow SHALL register a Gallery Slide as Slide 4 (index 3).
 #### Scenario: Registry order includes gallery at index 3
 
 - **WHEN** the Slideshow initializes
-- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Placeholder (index 5)
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Farewell slide (index 5)
 
 #### Scenario: Gallery confirms navigation from balloon game
 
@@ -97,36 +97,36 @@ The Slideshow SHALL register a Gallery Slide as Slide 4 (index 3).
 
 ### Requirement: Gift catch slide as Slide 5
 
-The Slideshow SHALL register a Gift catch slide as Slide 5 (index 4), replacing the previous Slide 5 Placeholder.
+The Slideshow SHALL register a Gift catch slide as Slide 5 (index 4).
 
 #### Scenario: Registry order includes gift catch at index 4
 
 - **WHEN** the Slideshow initializes
-- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Placeholder (index 5)
+- **THEN** the ordered registry is Intro (index 0), Birth Story Slide (index 1), Balloon Game Slide (index 2), Gallery Slide (index 3), Gift catch slide (index 4), Farewell slide (index 5)
 
 #### Scenario: Gift catch confirms navigation from gallery
 
 - **WHEN** the user completes the Gallery Slide final beat and clicks continue
 - **THEN** Slide 5 (Gift catch slide) is fully mounted and marked active in the Slideshow state
 
-#### Scenario: Gift catch navigates to placeholder
+#### Scenario: Gift catch navigates to farewell
 
 - **WHEN** the user completes the Gift catch slide and clicks Next
-- **THEN** Slide 6 (Placeholder) is fully mounted and marked active in the Slideshow state
+- **THEN** Slide 6 (Farewell) is fully mounted and marked active in the Slideshow state
 
-### Requirement: Placeholder slide as Slide 6
+### Requirement: Farewell slide as Slide 6
 
-The Slideshow SHALL include a minimal Placeholder slide as Slide 6 (index 5) to validate forward navigation after the Gift catch chapter while later content is still in progress.
+The Slideshow SHALL register a Farewell slide as Slide 6 (index 5), replacing Placeholder.
 
-#### Scenario: Placeholder content is minimal
+#### Scenario: Registry order includes farewell at index 5
 
-- **WHEN** Slide 6 is active
-- **THEN** the user sees only minimal neutral placeholder content indicating the next chapter is coming soon (no narrative story content)
+- **WHEN** the Slideshow initializes
+- **THEN** the ordered registry ends with Farewell at index 5 (Intro, Birth Story, Balloon Game, Gallery, Gift catch, Farewell)
 
-#### Scenario: Placeholder confirms navigation from gift catch
+#### Scenario: Farewell confirms navigation from gift catch
 
 - **WHEN** the user completes the Gift catch slide and clicks Next
-- **THEN** Slide 6 (Placeholder) is fully mounted and marked active in the Slideshow state
+- **THEN** Slide 6 (Farewell) is fully mounted and marked active in the Slideshow state
 
 #### Scenario: Slideshow soundtrack starts on birth story enter
 
@@ -157,10 +157,10 @@ The Slideshow SHALL animate transitions between Slides using smooth fade and/or 
 - **WHEN** navigation from Gallery Slide to Slide 5 Gift catch slide is triggered
 - **THEN** the Gallery Slide exits with a smooth animation before the Gift catch slide enters
 
-#### Scenario: Gift catch to placeholder transition
+#### Scenario: Gift catch to farewell transition
 
-- **WHEN** navigation from Gift catch slide to Slide 6 Placeholder is triggered
-- **THEN** the Gift catch slide exits with a smooth animation before the Placeholder enters
+- **WHEN** navigation from Gift catch slide to Slide 6 Farewell is triggered
+- **THEN** the Gift catch slide exits with a smooth animation before the Farewell slide enters
 
 #### Scenario: Wait mode between slides
 

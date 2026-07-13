@@ -7,6 +7,6 @@
  * 2 — Balloon Game
  * 3 — Gallery
  * 4 — Gift catch
- * 5 — Placeholder
+ * 5 — Farewell
  */
-export const DEV_START_SLIDE_INDEX = 5
+export const DEV_START_SLIDE_INDEX = 0
